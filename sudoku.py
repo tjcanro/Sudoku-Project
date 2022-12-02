@@ -51,6 +51,7 @@ def draw_game_start(screen):
     screen.blit(medium_surface, medium_rectangle)
     screen.blit(hard_surface, hard_rectangle)
 
+
 def draw_game_win(screen):
     win_title_font = pygame.font.Font(None, 100)
     exit_mode_font = pygame.font.Font(None, 60)
@@ -66,6 +67,7 @@ def draw_game_win(screen):
     exit_mode_rectangle = exit_mode_surface.get_rect(
         center=(WIDTH // 2, HEIGHT // 2))
     screen.blit(exit_mode_surface, exit_mode_rectangle)
+
 
 def draw_game_loss(screen):
     loss_title_font = pygame.font.Font(None, 100)
@@ -90,9 +92,9 @@ def main():
     pygame.init()
     pygame.display.set_caption("Sudoku")
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    number_font = pygame.font.SysFont(NUMBER_FONT, NUMBER_FONT_SIZE)
 
-    draw_game_start(screen)
+    x = Board(WIDTH, HEIGHT, screen, 10)
+    x.draw()
 
     while True:
         # event loop
