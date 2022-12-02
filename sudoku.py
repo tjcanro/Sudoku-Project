@@ -1,6 +1,8 @@
-import pygame, sys
+import pygame
+import sys
 from constants import *
 from board import Board
+from cell import Cell
 
 
 def draw_game_start(screen):
@@ -20,68 +22,6 @@ def draw_game_start(screen):
         center=(WIDTH // 2, HEIGHT // 2))
     screen.blit(game_mode_surface, game_mode_rectangle)
 
-    # Initialize buttons
-    # Initialize text first
-    easy_text = button_font.render("Easy", True, (255, 255, 255))
-    medium_text = button_font.render("Medium", True, (255, 255, 255))
-    hard_text = button_font.render("Hard", True, (255, 255, 255))
-
-    # Initialize button background color and text
-    easy_surface = pygame.Surface((easy_text.get_size()[0] + 20, easy_text.get_size()[1] + 20))
-    easy_surface.fill(LINE_COLOR)
-    easy_surface.blit(easy_text, (10, 10))
-    medium_surface = pygame.Surface((medium_text.get_size()[0] + 20, medium_text.get_size()[1] + 20))
-    medium_surface.fill(LINE_COLOR)
-    medium_surface.blit(medium_text, (10, 10))
-    hard_surface = pygame.Surface((hard_text.get_size()[0] + 20, hard_text.get_size()[1] + 20))
-    hard_surface.fill(LINE_COLOR)
-    hard_surface.blit(hard_text, (10, 10))
-
-    # Initialize button rectangle
-    easy_rectangle = easy_surface.get_rect(
-        center=(WIDTH // 2 - 150, HEIGHT // 2 + 150))
-    medium_rectangle = medium_surface.get_rect(
-        center=(WIDTH // 2, HEIGHT // 2 + 150))
-    hard_rectangle = hard_surface.get_rect(
-        center=(WIDTH // 2 + 150, HEIGHT // 2 + 150))
-
-    # Draw buttons
-    screen.blit(easy_surface, easy_rectangle)
-    screen.blit(medium_surface, medium_rectangle)
-    screen.blit(hard_surface, hard_rectangle)
-
-    def draw_game_win(screen):
-        win_title_font = pygame.font.Font(None, 100)
-        exit_mode_font = pygame.font.Font(None, 60)
-
-        screen.fill(BG_COLOR)
-
-        win_surface = win_title_font.render("Game Won!", True, LINE_COLOR)
-        win_rectangle = win_surface.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2 - 200))
-        screen.blit(win_surface, win_rectangle)
-
-        exit_mode_surface = exit_mode_font.render("Select Game Mode:", True, LINE_COLOR)
-        exit_mode_rectangle = exit_mode_surface.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2))
-        screen.blit(exit_mode_surface, exit_mode_rectangle)
-
-    def draw_game_loss(screen):
-        loss_title_font = pygame.font.Font(None, 100)
-        restart_mode_font = pygame.font.Font(None, 60)
-
-        screen.fill(BG_COLOR)
-
-        loss_surface = loss_title_font.render("Game Over :(", True, LINE_COLOR)
-        loss_rectangle = loss_surface.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2 - 200))
-        screen.blit(loss_surface, loss_rectangle)
-
-        restart_mode_surface = restart_mode_font.render("Select Game Mode:", True, LINE_COLOR)
-        restart_mode_rectangle = restart_mode_surface.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2))
-        screen.blit(restart_mode_surface, restart_mode_rectangle)
-
 
 def main():
     game_over = False
@@ -89,10 +29,8 @@ def main():
     pygame.init()
     pygame.display.set_caption("Sudoku")
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    number_font = pygame.font.SysFont(NUMBER_FONT, NUMBER_FONT_SIZE)
 
     draw_game_start(screen)
-
     while True:
         # event loop
         for event in pygame.event.get():
