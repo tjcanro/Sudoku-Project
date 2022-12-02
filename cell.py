@@ -1,5 +1,4 @@
 import pygame
-from sudoku import *
 from constants import *
 
 
@@ -30,38 +29,39 @@ class Cell:
         num9_sur = number_font.render('9', True, NUM_COLOR)
 
         if self.value == '1':
-            num1_rect = num1_sur.get_rect(
+            num_rect = num1_sur.get_rect(
                 center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
-            screen.blit(num1_sur, num1_rect)
+            screen.blit(num1_sur, num_rect)
         if self.value == '2':
-            num2_rect = num1_sur.get_rect(
+            num_rect = num2_sur.get_rect(
                 center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
-            screen.blit(num2_sur, num2_rect)
+            screen.blit(num2_sur, num_rect)
         if self.value == '3':
-            num3_rect = num1_sur.get_rect(
+            num_rect = num3_sur.get_rect(
                 center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
-            screen.blit(num2_sur, num3_rect)
+            screen.blit(num3_sur, num_rect)
         if self.value == '4':
-            num4_rect = num1_sur.get_rect(
+            num_rect = num4_sur.get_rect(
                 center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
-            screen.blit(num1_sur, num4_rect)
+            screen.blit(num4_sur, num_rect)
         if self.value == '5':
-            num5_rect = num1_sur.get_rect(
+            num_rect = num5_sur.get_rect(
                 center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
-            screen.blit(num1_sur, num5_rect)
+            screen.blit(num5_sur, num_rect)
         if self.value == '6':
-            num6_rect = num1_sur.get_rect(
+            num_rect = num6_sur.get_rect(
                 center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
-            screen.blit(num1_sur, num6_rect)
+            screen.blit(num6_sur, num_rect)
         if self.value == '7':
-            num7_rect = num1_sur.get_rect(
+            num_rect = num7_sur.get_rect(
                 center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
-            screen.blit(num1_sur, num7_rect)
+            screen.blit(num7_sur, num_rect)
         if self.value == '8':
-            num8_rect = num1_sur.get_rect(
+            num_rect = num8_sur.get_rect(
                 center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
-            screen.blit(num1_sur, num8_rect)
+            screen.blit(num8_sur, num_rect)
         if self.value == '9':
-            num9_rect = num1_sur.get_rect(
+            num_rect = num9_sur.get_rect(
                 center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
-            screen.blit(num1_sur, num9_rect)
+            screen.blit(num9_sur, num_rect)
+

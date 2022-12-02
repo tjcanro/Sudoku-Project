@@ -1,6 +1,8 @@
-import pygame, sys
+import pygame
+import sys
 from constants import *
 from board import Board
+from cell import Cell
 
 
 def draw_game_start(screen):
@@ -27,11 +29,8 @@ def main():
     pygame.init()
     pygame.display.set_caption("Sudoku")
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    number_font = pygame.font.SysFont(NUMBER_FONT, NUMBER_FONT_SIZE)
 
     draw_game_start(screen)
-
-
     while True:
         # event loop
         for event in pygame.event.get():
