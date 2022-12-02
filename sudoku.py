@@ -11,12 +11,14 @@ def draw_game_start(screen):
     screen.fill(BG_COLOR)
 
     title_surface = start_title_font.render("Welcome to Sudoku", True, LINE_COLOR)
+    title_rectangle = title_surface.get_rect(
+        center=(WIDTH // 2, HEIGHT // 2 - 200))
+    screen.blit(title_surface, title_rectangle)
 
-    select_game_mode = start_title_font.render("Select Game Mode", True, LINE_COLOR)
-
-
-
-
+    game_mode_surface = game_mode_font.render("Select Game Mode:", True, LINE_COLOR)
+    game_mode_rectangle = title_surface.get_rect(
+        center=(WIDTH // 2, HEIGHT // 2))
+    screen.blit(game_mode_surface, game_mode_rectangle)
 
 
 
@@ -29,6 +31,7 @@ def main():
     number_font = pygame.font.SysFont(NUMBER_FONT, NUMBER_FONT_SIZE)
 
     draw_game_start(screen)
+
 
     while True:
         # event loop

@@ -2,7 +2,7 @@ import math, random
 
 
 class SudokuGenerator:
-    def __init__(self, removed_cells, row_length=9):
+    def __init__(self, row_length, removed_cells):
         self.remove_cells = removed_cells
         self.row_length = row_length
         self.box_length = math.sqrt(row_length)
@@ -169,18 +169,18 @@ def generate_sudoku(size, removed=0):
     sudoku = SudokuGenerator(size, removed)
     sudoku.fill_values()
     board = sudoku.get_board()
-    sudoku.remove_cells()
+    # sudoku.remove_cells()
     board = sudoku.get_board()
     return board
 
 
-# sudo = SudokuGenerator(0)
-# print(sudo.valid_in_row(3, 6))
-# sudo.print_board()
-# print(sudo.valid_in_col(3, 6))
-# sudo.fill_diagonal()
-# sudo.print_board()
-# print(sudo.fill_remaining(0, 3))
-# sudo.fill_values()
-# sudo.print_board()
-generate_sudoku(9)
+sudo = SudokuGenerator(9, 0)
+print(sudo.valid_in_row(3, 6))
+sudo.print_board()
+print(sudo.valid_in_col(3, 6))
+sudo.fill_diagonal()
+sudo.print_board()
+print(sudo.fill_remaining(0, 3))
+sudo.fill_values()
+sudo.print_board()
+new_sudo = generate_sudoku(9, 0)
