@@ -1,5 +1,6 @@
 { pkgs }: {
   deps = [
+    pkgs.clear screen
     pkgs.python38Full
   ];
   env = {
