@@ -16,10 +16,9 @@ def draw_game_start(screen):
     screen.blit(title_surface, title_rectangle)
 
     game_mode_surface = game_mode_font.render("Select Game Mode:", True, LINE_COLOR)
-    game_mode_rectangle = title_surface.get_rect(
+    game_mode_rectangle = game_mode_surface.get_rect(
         center=(WIDTH // 2, HEIGHT // 2))
     screen.blit(game_mode_surface, game_mode_rectangle)
-
 
 
 def main():
