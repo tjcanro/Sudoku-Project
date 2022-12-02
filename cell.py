@@ -28,39 +28,39 @@ class Cell:
         num8_sur = number_font.render('8', True, NUM_COLOR)
         num9_sur = number_font.render('9', True, NUM_COLOR)
 
-        if self.value == '1':
+        if self.value == 1:
             num_rect = num1_sur.get_rect(
                 center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
             screen.blit(num1_sur, num_rect)
-        if self.value == '2':
+        if self.value == 2:
             num_rect = num2_sur.get_rect(
                 center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
             screen.blit(num2_sur, num_rect)
-        if self.value == '3':
+        if self.value == 3:
             num_rect = num3_sur.get_rect(
                 center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
             screen.blit(num3_sur, num_rect)
-        if self.value == '4':
+        if self.value == 4:
             num_rect = num4_sur.get_rect(
                 center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
             screen.blit(num4_sur, num_rect)
-        if self.value == '5':
+        if self.value == 5:
             num_rect = num5_sur.get_rect(
                 center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
             screen.blit(num5_sur, num_rect)
-        if self.value == '6':
+        if self.value == 6:
             num_rect = num6_sur.get_rect(
                 center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
             screen.blit(num6_sur, num_rect)
-        if self.value == '7':
+        if self.value == 7:
             num_rect = num7_sur.get_rect(
                 center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
             screen.blit(num7_sur, num_rect)
-        if self.value == '8':
+        if self.value == 8:
             num_rect = num8_sur.get_rect(
                 center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
             screen.blit(num8_sur, num_rect)
-        if self.value == '9':
+        if self.value == 9:
             num_rect = num9_sur.get_rect(
                 center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
             screen.blit(num9_sur, num_rect)

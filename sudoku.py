@@ -1,5 +1,6 @@
 import pygame, sys
 from constants import *
+from cell import Cell
 from board import Board
 
 
@@ -50,37 +51,37 @@ def draw_game_start(screen):
     screen.blit(medium_surface, medium_rectangle)
     screen.blit(hard_surface, hard_rectangle)
 
-    def draw_game_win(screen):
-        win_title_font = pygame.font.Font(None, 100)
-        exit_mode_font = pygame.font.Font(None, 60)
+def draw_game_win(screen):
+    win_title_font = pygame.font.Font(None, 100)
+    exit_mode_font = pygame.font.Font(None, 60)
 
-        screen.fill(BG_COLOR)
+    screen.fill(BG_COLOR)
 
-        win_surface = win_title_font.render("Game Won!", True, LINE_COLOR)
-        win_rectangle = win_surface.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2 - 200))
-        screen.blit(win_surface, win_rectangle)
+    win_surface = win_title_font.render("Game Won!", True, LINE_COLOR)
+    win_rectangle = win_surface.get_rect(
+        center=(WIDTH // 2, HEIGHT // 2 - 200))
+    screen.blit(win_surface, win_rectangle)
 
-        exit_mode_surface = exit_mode_font.render("Select Game Mode:", True, LINE_COLOR)
-        exit_mode_rectangle = exit_mode_surface.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2))
-        screen.blit(exit_mode_surface, exit_mode_rectangle)
+    exit_mode_surface = exit_mode_font.render("Select Game Mode:", True, LINE_COLOR)
+    exit_mode_rectangle = exit_mode_surface.get_rect(
+        center=(WIDTH // 2, HEIGHT // 2))
+    screen.blit(exit_mode_surface, exit_mode_rectangle)
 
-    def draw_game_loss(screen):
-        loss_title_font = pygame.font.Font(None, 100)
-        restart_mode_font = pygame.font.Font(None, 60)
+def draw_game_loss(screen):
+    loss_title_font = pygame.font.Font(None, 100)
+    restart_mode_font = pygame.font.Font(None, 60)
 
-        screen.fill(BG_COLOR)
+    screen.fill(BG_COLOR)
 
-        loss_surface = loss_title_font.render("Game Over :(", True, LINE_COLOR)
-        loss_rectangle = loss_surface.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2 - 200))
-        screen.blit(loss_surface, loss_rectangle)
+    loss_surface = loss_title_font.render("Game Over :(", True, LINE_COLOR)
+    loss_rectangle = loss_surface.get_rect(
+        center=(WIDTH // 2, HEIGHT // 2 - 200))
+    screen.blit(loss_surface, loss_rectangle)
 
-        restart_mode_surface = restart_mode_font.render("Select Game Mode:", True, LINE_COLOR)
-        restart_mode_rectangle = restart_mode_surface.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2))
-        screen.blit(restart_mode_surface, restart_mode_rectangle)
+    restart_mode_surface = restart_mode_font.render("Select Game Mode:", True, LINE_COLOR)
+    restart_mode_rectangle = restart_mode_surface.get_rect(
+        center=(WIDTH // 2, HEIGHT // 2))
+    screen.blit(restart_mode_surface, restart_mode_rectangle)
 
 
 def main():
@@ -92,7 +93,6 @@ def main():
     number_font = pygame.font.SysFont(NUMBER_FONT, NUMBER_FONT_SIZE)
 
     draw_game_start(screen)
-
 
     while True:
         # event loop

@@ -112,4 +112,4 @@ def generate_sudoku(size, removed=0):
     return board
 
 
-generate_sudoku(9, 20)
+generate_sudoku(9, 23)
