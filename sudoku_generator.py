@@ -88,32 +88,19 @@ class SudokuGenerator:
         self.fill_diagonal()
         self.fill_remaining(0, self.box_length)
 
-    '''
-    Removes the appropriate number of cells from the board
-    This is done by setting some values to 0
-    Should be called after the entire solution has been constructed
-    i.e. after fill_values has been called
-    
-    NOTE: Be careful not to 'remove' the same cell multiple times
-    i.e. if a cell is already 0, it cannot be removed again
-
-	Parameters: None
-	Return: None
-    '''
-
     def remove_cells(self):
         random_row = random.randint(0, 8)
         random_col = random.randint(0, 8)
-        counter = self.removed_cells
-        for i in range(0, counter):
+        counter = 0
+        while counter < self.removed_cells:
             if self.board[random_row][random_col] != 0:
                 self.board[random_row][random_col] = 0
                 random_row = random.randint(0, 8)
                 random_col = random.randint(0, 8)
+                counter += 1
             else:
                 random_row = random.randint(0, 8)
                 random_col = random.randint(0, 8)
-                counter += 1
 
 
 def generate_sudoku(size, removed=0):
