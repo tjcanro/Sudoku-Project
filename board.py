@@ -3,6 +3,7 @@ from sudoku_generator import *
 from constants import *
 import pygame
 
+
 class Board:
     def __init__(self, width, height, screen, difficulty):
         self.width = width
@@ -87,4 +88,3 @@ class Board:
 
     def check_board(self):
         pass
-
