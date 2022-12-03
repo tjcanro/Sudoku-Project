@@ -61,7 +61,10 @@ class Board:
                 j.draw(screen)
 
     def select(self, row, col):
-        pass
+        for i in self.cells:
+            for j in i:
+                if j.row == row and j.col == col:
+                    return j
 
     def click(self, x, y):
         row = x // SQUARE_SIZE
