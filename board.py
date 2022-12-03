@@ -1,3 +1,4 @@
+
 from cell import Cell
 from sudoku_generator import *
 from constants import *
@@ -19,7 +20,7 @@ class Board:
     def draw(self):
         screen = pygame.display.set_mode((WIDTH, HEIGHT))
         screen.fill(BG_COLOR)
-        for i in range(1, BOARD_ROWS):
+        for i in range(1, BOARD_ROWS + 1):
             if i % 3 != 0:
                 pygame.draw.line(
                     screen,
@@ -44,7 +45,7 @@ class Board:
                     screen,
                     LINE_COLOR,
                     (j * SQUARE_SIZE, 0),
-                    (j * SQUARE_SIZE, HEIGHT),
+                    (j * SQUARE_SIZE, HEIGHT - (HEIGHT - WIDTH)),
                     LINE_WIDTH
                 )
             else:
@@ -52,7 +53,7 @@ class Board:
                     screen,
                     LINE_COLOR,
                     (j * SQUARE_SIZE, 0),
-                    (j * SQUARE_SIZE, HEIGHT),
+                    (j * SQUARE_SIZE, HEIGHT - (HEIGHT - WIDTH)),
                     BOLD_LINE_WIDTH
                 )
         for i in self.cells:
@@ -92,3 +93,4 @@ class Board:
 
     def check_board(self):
         pass
+
