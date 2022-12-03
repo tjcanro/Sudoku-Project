@@ -80,9 +80,6 @@ class Board:
                     self.board.draw()
                     pygame.display.update()
 
-    def sketch(self, value):
-        pass
-
     def place_number(self, value):
         pass
 

@@ -106,8 +106,8 @@ def main():
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
     difficulty = draw_game_start(screen)
-    x = Board(WIDTH, HEIGHT, screen, difficulty)
-    x.draw()
+    current_board = Board(WIDTH, HEIGHT, screen, difficulty)
+    current_board.draw()
 
 
     while True:
@@ -115,10 +115,12 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-            if x.is_full():
+            if current_board.is_full():
                 pass
             if event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = event.pos
+                row, column = current_board.click(x, y)
+                current_cell = current_board.select(row, column)
 
 
 
