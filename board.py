@@ -64,7 +64,9 @@ class Board:
         pass
 
     def click(self, x, y):
-        pass
+        row = x // SQUARE_SIZE
+        col = y // SQUARE_SIZE
+        return row, col
 
     def clear(self):
         pass
