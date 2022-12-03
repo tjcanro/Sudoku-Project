@@ -58,7 +58,7 @@ class Board:
                 )
         for i in self.cells:
             for j in i:
-                j.draw(screen)
+                j.draw(self.screen)
 
     def select(self, row, col):
         for i in self.cells:
@@ -72,7 +72,13 @@ class Board:
         return row, col
 
     def clear(self):
-        pass
+        for event in pygame.event.get():
+            if event == pygame.KEYDOWN:
+                if event.key == pygame.K_BACKSPACE:
+                    self.board.place_number('0')
+                    self.screen.fill(BG_COLOR)
+                    self.board.draw()
+                    pygame.display.update()
 
     def sketch(self, value):
         pass
@@ -91,7 +97,10 @@ class Board:
         return True
 
     def update_board(self):
-        pass
+        self.cells = [
+            [Cell(self.board[i][j], i, j, self.screen) for j in range(9)]
+            for i in range(9)
+        ]
 
     def find_empty(self):
         pass

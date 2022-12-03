@@ -51,6 +51,18 @@ def draw_game_start(screen):
     screen.blit(medium_surface, medium_rectangle)
     screen.blit(hard_surface, hard_rectangle)
 
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if easy_rectangle.collidepoint(event.pos):
+                    return 30
+                if medium_rectangle.collidepoint(event.pos):
+                    return 40
+                if hard_rectangle.collidepoint(event.pos):
+                    return 50
+        pygame.display.update()
 
 def draw_game_win(screen):
     win_title_font = pygame.font.Font(None, 100)
@@ -93,14 +105,22 @@ def main():
     pygame.display.set_caption("Sudoku")
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
-    x = Board(WIDTH, HEIGHT, screen, 10)
+    difficulty = draw_game_start(screen)
+    x = Board(WIDTH, HEIGHT, screen, difficulty)
     x.draw()
+
 
     while True:
         # event loop
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
+            if x.is_full():
+                pass
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = event.pos
+
+
 
         pygame.display.update()
 
