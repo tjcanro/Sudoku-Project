@@ -49,11 +49,10 @@ def draw_game_start(screen):
     screen.blit(easy_surface, easy_rectangle)
     screen.blit(medium_surface, medium_rectangle)
     screen.blit(hard_surface, hard_rectangle)
-
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                sys.exit()
+                pygame.quit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if easy_rectangle.collidepoint(event.pos):
                     return 30
@@ -117,39 +116,40 @@ def main():
                 x, y = event.pos
                 row, column = current_board.click(x, y)
                 current_cell = current_board.select(column, row)
+                # current_cell.selected = True
+                # current_cell.draw(screen)
                 selected = True
             pygame.display.update()
         while selected:
-            for event2 in pygame.event.get():
-                if event2.type == pygame.QUIT:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
                     pygame.quit()
-                if event2.type == pygame.KEYDOWN:
-                    if event2.key == pygame.K_0:
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_0:
                         current_cell.set_cell_value(0)
-                    if event2.key == pygame.K_1:
+                    if event.key == pygame.K_1:
                         current_cell.set_cell_value(1)
-                    if event2.key == pygame.K_2:
+                    if event.key == pygame.K_2:
                         current_cell.set_cell_value(2)
-                    if event2.key == pygame.K_3:
+                    if event.key == pygame.K_3:
                         current_cell.set_cell_value(3)
-                    if event2.key == pygame.K_4:
+                    if event.key == pygame.K_4:
                         current_cell.set_cell_value(4)
-                    if event2.key == pygame.K_5:
+                    if event.key == pygame.K_5:
                         current_cell.set_cell_value(5)
-                    if event2.key == pygame.K_6:
+                    if event.key == pygame.K_6:
                         current_cell.set_cell_value(6)
-                    if event2.key == pygame.K_7:
+                    if event.key == pygame.K_7:
                         current_cell.set_cell_value(7)
-                    if event2.key == pygame.K_8:
+                    if event.key == pygame.K_8:
                         current_cell.set_cell_value(8)
-                    if event2.key == pygame.K_9:
+                    if event.key == pygame.K_9:
                         current_cell.set_cell_value(9)
-                    if event2.key == pygame.K_BACKSPACE:
+                    if event.key == pygame.K_BACKSPACE:
                         current_cell.set_cell_value(0)
                         screen.fill(BG_COLOR)
                         current_board.draw()
                         pygame.display.update()
-
                     current_board.update_board()
                     current_cell.draw(screen)
                     current_board.check_board()
@@ -160,9 +160,12 @@ def main():
                             draw_game_loss(screen)
                         selected = False
 
-                if event2.type == pygame.MOUSEBUTTONDOWN:
-                    selected = False
-
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    x, y = event.pos
+                    row, column = current_board.click(x, y)
+                    current_cell = current_board.select(column, row)
+                pygame.display.update()
+                continue
             pygame.display.update()
 
 

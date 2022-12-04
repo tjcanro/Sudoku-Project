@@ -107,7 +107,8 @@ def generate_sudoku(size, removed=0):
     sudoku = SudokuGenerator(size, removed)
     sudoku.fill_values()
     board = sudoku.get_board()
-    original = copy.deepcopy(board)
+    filled = copy.deepcopy(board)
     sudoku.remove_cells()
+    original = copy.deepcopy(board)
     sudoku.print_board()
-    return board, original
+    return board, filled, original

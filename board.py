@@ -10,19 +10,19 @@ class Board:
         self.height = height
         self.screen = screen
         self.difficulty = difficulty
-        self.board, self.original = generate_sudoku(9, difficulty)
+        self.board, self.filled, self.original = generate_sudoku(9, difficulty)
         self.cells = [
             [Cell(self.board[i][j], i, j, screen) for j in range(9)]
             for i in range(9)
         ]
 
+
     def draw(self):
-        screen = pygame.display.set_mode((WIDTH, HEIGHT))
-        screen.fill(BG_COLOR)
+        self.screen.fill(BG_COLOR)
         for i in range(1, BOARD_ROWS + 1):
             if i % 3 != 0:
                 pygame.draw.line(
-                    screen,
+                    self.screen,
                     LINE_COLOR,
                     (0, i * SQUARE_SIZE),
                     (WIDTH, i * SQUARE_SIZE),
@@ -30,7 +30,7 @@ class Board:
                 )
             else:
                 pygame.draw.line(
-                    screen,
+                    self.screen,
                     LINE_COLOR,
                     (0, i * SQUARE_SIZE),
                     (WIDTH, i * SQUARE_SIZE),
@@ -41,7 +41,7 @@ class Board:
         for j in range(1, BOARD_COLS):
             if j % 3 != 0:
                 pygame.draw.line(
-                    screen,
+                    self.screen,
                     LINE_COLOR,
                     (j * SQUARE_SIZE, 0),
                     (j * SQUARE_SIZE, HEIGHT - (HEIGHT - WIDTH)),
@@ -49,7 +49,7 @@ class Board:
                 )
             else:
                 pygame.draw.line(
-                    screen,
+                    self.screen,
                     LINE_COLOR,
                     (j * SQUARE_SIZE, 0),
                     (j * SQUARE_SIZE, HEIGHT - (HEIGHT - WIDTH)),
@@ -71,7 +71,11 @@ class Board:
         return row, col
 
     def reset_to_original(self):
-        pass
+        for i in range(9):
+            for j in range(9):
+                self.board[i][j] = self.original[i][j]
+        self.update_board()
+        self.draw()
 
     def is_full(self):
         for row in self.board:
@@ -88,6 +92,6 @@ class Board:
     def check_board(self):
         for i in range(9):
             for j in range(9):
-                if self.board[i][j] != self.original[i][j]:
+                if self.board[i][j] != self.filled[i][j]:
                     return False
         return True

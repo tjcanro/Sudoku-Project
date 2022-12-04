@@ -9,6 +9,7 @@ class Cell:
         self.row = row
         self.col = col
         self.screen = screen
+        self.selected = False
 
     def set_cell_value(self, value):
         self.value = value
@@ -25,6 +26,11 @@ class Cell:
         num7_sur = number_font.render('7', True, NUM_COLOR)
         num8_sur = number_font.render('8', True, NUM_COLOR)
         num9_sur = number_font.render('9', True, NUM_COLOR)
+        # if self.selected:
+        #     pygame.draw.rect(screen, OUTLINE_COLOR, pygame.Rect(self.col * SQUARE_SIZE, self.row * SQUARE_SIZE,
+        #                      SQUARE_SIZE, SQUARE_SIZE), 100)
+        #     self.selected = False
+
 
         if self.value == 0:
             num_rect = num0_sur.get_rect(
