@@ -1,6 +1,5 @@
 import pygame, sys
 from constants import *
-from cell import Cell
 from board import Board
 
 
@@ -64,6 +63,7 @@ def draw_game_start(screen):
                     return 50
         pygame.display.update()
 
+
 def draw_game_win(screen):
     win_title_font = pygame.font.Font(None, 100)
     exit_mode_font = pygame.font.Font(None, 60)
@@ -108,23 +108,57 @@ def main():
     difficulty = draw_game_start(screen)
     current_board = Board(WIDTH, HEIGHT, screen, difficulty)
     current_board.draw()
-
-
+    selected = False
     while True:
         # event loop
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-            if current_board.is_full():
-                pass
             if event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = event.pos
                 row, column = current_board.click(x, y)
-                current_cell = current_board.select(row, column)
-
-
-
+                current_cell = current_board.select(column, row)
+                selected = True
         pygame.display.update()
+        while selected:
+            for event2 in pygame.event.get():
+                if event2.type == pygame.QUIT:
+                    pygame.quit()
+                if event2.type == pygame.KEYDOWN:
+                    if event2.key == pygame.K_0:
+                        current_cell.set_cell_value(0)
+                    if event2.key == pygame.K_1:
+                        current_cell.set_cell_value(1)
+                    if event2.key == pygame.K_2:
+                        current_cell.set_cell_value(2)
+                    if event2.key == pygame.K_3:
+                        current_cell.set_cell_value(3)
+                    if event2.key == pygame.K_4:
+                        current_cell.set_cell_value(4)
+                    if event2.key == pygame.K_5:
+                        current_cell.set_cell_value(5)
+                    if event2.key == pygame.K_6:
+                        current_cell.set_cell_value(6)
+                    if event2.key == pygame.K_7:
+                        current_cell.set_cell_value(7)
+                    if event2.key == pygame.K_8:
+                        current_cell.set_cell_value(8)
+                    if event2.key == pygame.K_9:
+                        current_cell.set_cell_value(9)
+                    current_board.update_board()
+                    current_cell.draw(screen)
+                    current_board.check_board()
+                    if current_board.is_full():
+                        if current_board.check_board():
+                            draw_game_win(screen)
+                        else:
+                            draw_game_loss(screen)
+                        selected = False
+
+                if event2.type == pygame.MOUSEBUTTONDOWN:
+                    selected = False
+
+            pygame.display.update()
 
 
 if __name__ == "__main__":
