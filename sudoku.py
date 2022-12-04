@@ -116,11 +116,11 @@ def main():
                 x, y = event.pos
                 row, column = current_board.click(x, y)
                 current_cell = current_board.select(column, row)
-                # current_cell.selected = True
-                # current_cell.draw(screen)
                 selected = True
+                current_board.draw()
             pygame.display.update()
         while selected:
+            current_cell.draw(screen)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()

@@ -63,6 +63,7 @@ class Board:
         for i in self.cells:
             for j in i:
                 if j.row == row and j.col == col:
+                    j.selected = True
                     return j
 
     def click(self, x, y):

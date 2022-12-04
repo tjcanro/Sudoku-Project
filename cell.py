@@ -26,10 +26,10 @@ class Cell:
         num7_sur = number_font.render('7', True, NUM_COLOR)
         num8_sur = number_font.render('8', True, NUM_COLOR)
         num9_sur = number_font.render('9', True, NUM_COLOR)
-        # if self.selected:
-        #     pygame.draw.rect(screen, OUTLINE_COLOR, pygame.Rect(self.col * SQUARE_SIZE, self.row * SQUARE_SIZE,
-        #                      SQUARE_SIZE, SQUARE_SIZE), 100)
-        #     self.selected = False
+        if self.selected:
+            pygame.draw.rect(screen, OUTLINE_COLOR, pygame.Rect(self.col * SQUARE_SIZE, self.row * SQUARE_SIZE,
+                             SQUARE_SIZE, SQUARE_SIZE), 2)
+            self.selected = False
 
 
         if self.value == 0:
