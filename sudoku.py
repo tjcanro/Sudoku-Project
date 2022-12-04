@@ -112,7 +112,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.type == pygame.MOUSEBUTTONDOWN and not game_over:
                 x, y = event.pos
                 row, column = current_board.click(x, y)
                 current_cell = current_board.select(column, row)
@@ -156,6 +156,7 @@ def main():
                             draw_game_win(screen)
                         else:
                             draw_game_loss(screen)
+                        game_over = True
                         selected = False
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
