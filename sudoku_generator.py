@@ -2,6 +2,7 @@ import math
 import random
 import copy
 
+
 class SudokuGenerator:
     def __init__(self, row_length, removed_cells):
         self.removed_cells = removed_cells

@@ -65,8 +65,7 @@ def draw_game_start(screen):
 
 def draw_game_win(screen):
     win_title_font = pygame.font.Font(None, 100)
-    exit_mode_font = pygame.font.Font(None, 60)
-    button_font = pygame.font.Font(None, 40)
+    button_font = pygame.font.Font(None, 70)
 
     screen.fill(BG_COLOR)
 
@@ -89,7 +88,7 @@ def draw_game_win(screen):
 
 def draw_game_loss(screen):
     loss_title_font = pygame.font.Font(None, 100)
-    button_font = pygame.font.Font(None, 40)
+    button_font = pygame.font.Font(None, 70)
 
     screen.fill(BG_COLOR)
 
@@ -98,7 +97,7 @@ def draw_game_loss(screen):
         center=(WIDTH // 2, HEIGHT // 2 - 200))
     screen.blit(loss_surface, loss_rectangle)
 
-    restart_text = button_font.render("Exit", True, BG_COLOR)
+    restart_text = button_font.render("Restart", True, BG_COLOR)
 
     restart_surface = pygame.Surface((restart_text.get_size()[0] + 20, restart_text.get_size()[1] + 20))
     restart_surface.fill(LINE_COLOR)

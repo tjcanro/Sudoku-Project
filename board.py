@@ -16,7 +16,6 @@ class Board:
             for i in range(9)
         ]
 
-
     def draw(self):
         self.screen.fill(BG_COLOR)
         for i in range(1, BOARD_ROWS + 1):
