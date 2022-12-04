@@ -130,6 +130,8 @@ def main():
                 column, row = current_board.click(x, y)
                 if exit_rect.collidepoint(x, y):
                     pygame.quit()
+                if restart_rect.collidepoint(x, y):
+                    main()
                 if 0 <= row <= 8 and 0 <= column <= 8:
                     if current_board.original[int(row)][int(column)] == 0:
                         current_cell = current_board.select(row, column)
@@ -183,6 +185,8 @@ def main():
                     x, y = event.pos
                     if exit_rect.collidepoint(x, y):
                         pygame.quit()
+                    if restart_rect.collidepoint(x, y):
+                        main()
                     column, row = current_board.click(x, y)
                     if 0 <= row <= 8 and 0 <= column <= 8:
                         if current_board.original[int(row)][int(column)] == 0:
