@@ -13,11 +13,9 @@ class Cell:
     def set_cell_value(self, value):
         self.value = value
 
-    def set_sketched_value(self, value):
-        self.value = value
-
     def draw(self, screen):
         number_font = pygame.font.SysFont(NUMBER_FONT, NUMBER_FONT_SIZE)
+        num0_sur = number_font.render('0', True, NUM_COLOR)
         num1_sur = number_font.render('1', True, NUM_COLOR)
         num2_sur = number_font.render('2', True, NUM_COLOR)
         num3_sur = number_font.render('3', True, NUM_COLOR)
@@ -28,6 +26,9 @@ class Cell:
         num8_sur = number_font.render('8', True, NUM_COLOR)
         num9_sur = number_font.render('9', True, NUM_COLOR)
 
+        if self.value == 0:
+            num_rect = num0_sur.get_rect(
+                center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
         if self.value == 1:
             num_rect = num1_sur.get_rect(
                 center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
@@ -64,4 +65,3 @@ class Cell:
             num_rect = num9_sur.get_rect(
                 center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
             screen.blit(num9_sur, num_rect)
-
