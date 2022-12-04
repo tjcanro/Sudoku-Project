@@ -82,8 +82,8 @@ def draw_game_win(screen):
 
     exit_rectangle = exit_surface.get_rect(
         center=(WIDTH // 2, HEIGHT // 2))
-#
-#     screen.blit(exit_surface, exit_rectangle)
+
+    screen.blit(exit_surface, exit_rectangle)
 
 
 def draw_game_loss(screen):
@@ -118,6 +118,7 @@ def main():
     difficulty = draw_game_start(screen)
     current_board = Board(WIDTH, HEIGHT, screen, difficulty)
     current_board.draw()
+    reset_rect, restart_rect, exit_rect = current_board.draw()
     selected = False
     while True:
         # event loop
@@ -127,6 +128,8 @@ def main():
             if event.type == pygame.MOUSEBUTTONDOWN and not game_over:
                 x, y = event.pos
                 column, row = current_board.click(x, y)
+                if exit_rect.collidepoint(x, y):
+                    pygame.quit()
                 if 0 <= row <= 8 and 0 <= column <= 8:
                     if current_board.original[int(row)][int(column)] == 0:
                         current_cell = current_board.select(row, column)
@@ -178,6 +181,8 @@ def main():
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     x, y = event.pos
+                    if exit_rect.collidepoint(x, y):
+                        pygame.quit()
                     column, row = current_board.click(x, y)
                     if 0 <= row <= 8 and 0 <= column <= 8:
                         if current_board.original[int(row)][int(column)] == 0:

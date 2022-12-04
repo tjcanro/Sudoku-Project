@@ -88,6 +88,8 @@ class Board:
         self.screen.blit(restart_surface, restart_rectangle)
         self.screen.blit(exit_surface, exit_rectangle)
 
+        return reset_rectangle, restart_rectangle, exit_rectangle
+
     def select(self, row, col):
         for i in self.cells:
             for j in i:
