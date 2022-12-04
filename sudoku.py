@@ -75,7 +75,7 @@ def draw_game_win(screen):
         center=(WIDTH // 2, HEIGHT // 2 - 200))
     screen.blit(win_surface, win_rectangle)
 
-    exit_mode_surface = exit_mode_font.render("Select Game Mode:", True, LINE_COLOR)
+    exit_mode_surface = exit_mode_font.render("Exit", True, LINE_COLOR)
     exit_mode_rectangle = exit_mode_surface.get_rect(
         center=(WIDTH // 2, HEIGHT // 2))
     screen.blit(exit_mode_surface, exit_mode_rectangle)
@@ -92,7 +92,7 @@ def draw_game_loss(screen):
         center=(WIDTH // 2, HEIGHT // 2 - 200))
     screen.blit(loss_surface, loss_rectangle)
 
-    restart_mode_surface = restart_mode_font.render("Select Game Mode:", True, LINE_COLOR)
+    restart_mode_surface = restart_mode_font.render("Restart", True, LINE_COLOR)
     restart_mode_rectangle = restart_mode_surface.get_rect(
         center=(WIDTH // 2, HEIGHT // 2))
     screen.blit(restart_mode_surface, restart_mode_rectangle)
