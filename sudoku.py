@@ -146,6 +146,7 @@ def main():
                         current_cell.set_cell_value(9)
                     if event.key == pygame.K_BACKSPACE:
                         current_cell.set_cell_value(0)
+                        current_cell.selected = True
                         current_board.draw()
                         pygame.display.update()
                     current_board.update_board()
