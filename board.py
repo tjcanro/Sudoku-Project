@@ -70,18 +70,6 @@ class Board:
         col = y // SQUARE_SIZE
         return row, col
 
-    def clear(self):
-        for event in pygame.event.get():
-            if event == pygame.KEYDOWN:
-                if event.key == pygame.K_BACKSPACE:
-                    self.board.place_number('0')
-                    self.screen.fill(BG_COLOR)
-                    self.board.draw()
-                    pygame.display.update()
-
-    def place_number(self, cell, value):
-        pass
-
     def reset_to_original(self):
         pass
 

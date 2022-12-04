@@ -100,7 +100,6 @@ def draw_game_loss(screen):
 
 def main():
     game_over = False
-
     pygame.init()
     pygame.display.set_caption("Sudoku")
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -119,7 +118,7 @@ def main():
                 row, column = current_board.click(x, y)
                 current_cell = current_board.select(column, row)
                 selected = True
-        pygame.display.update()
+            pygame.display.update()
         while selected:
             for event2 in pygame.event.get():
                 if event2.type == pygame.QUIT:
@@ -145,6 +144,12 @@ def main():
                         current_cell.set_cell_value(8)
                     if event2.key == pygame.K_9:
                         current_cell.set_cell_value(9)
+                    if event2.key == pygame.K_BACKSPACE:
+                        current_cell.set_cell_value(0)
+                        screen.fill(BG_COLOR)
+                        current_board.draw()
+                        pygame.display.update()
+
                     current_board.update_board()
                     current_cell.draw(screen)
                     current_board.check_board()
