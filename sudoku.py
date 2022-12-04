@@ -145,6 +145,8 @@ def main():
             if event.type == pygame.MOUSEBUTTONDOWN and not game_over:
                 x, y = event.pos
                 column, row = current_board.click(x, y)
+                if reset_rect.collidepoint(x,y):
+                    current_board.reset_to_original()
                 if exit_rect.collidepoint(x, y):
                     pygame.quit()
                 if restart_rect.collidepoint(x, y):
@@ -200,6 +202,8 @@ def main():
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     x, y = event.pos
+                    if reset_rect.collidepoint(x, y):
+                        current_board.reset_to_original()
                     if exit_rect.collidepoint(x, y):
                         pygame.quit()
                     if restart_rect.collidepoint(x, y):
