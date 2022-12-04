@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame
 from constants import *
 from board import Board
 
@@ -120,7 +120,6 @@ def main():
                 current_board.draw()
             pygame.display.update()
         while selected:
-            current_cell.draw(screen)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -147,7 +146,6 @@ def main():
                         current_cell.set_cell_value(9)
                     if event.key == pygame.K_BACKSPACE:
                         current_cell.set_cell_value(0)
-                        screen.fill(BG_COLOR)
                         current_board.draw()
                         pygame.display.update()
                     current_board.update_board()
@@ -164,8 +162,9 @@ def main():
                     x, y = event.pos
                     row, column = current_board.click(x, y)
                     current_cell = current_board.select(column, row)
+                    selected = True
+                    current_board.draw()
                 pygame.display.update()
-                continue
             pygame.display.update()
 
 
