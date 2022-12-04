@@ -78,11 +78,11 @@ class Board:
 
         # Initialize button rectangle
         reset_rectangle = reset_surface.get_rect(
-            center=(WIDTH // 2 - 250, HEIGHT // 2 + 355))
+            center=(WIDTH // 2 - 250, HEIGHT // 2 + 360))
         restart_rectangle = restart_surface.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2 + 355))
+            center=(WIDTH // 2, HEIGHT // 2 + 360))
         exit_rectangle = exit_surface.get_rect(
-            center=(WIDTH // 2 + 250, HEIGHT // 2 + 355))
+            center=(WIDTH // 2 + 250, HEIGHT // 2 + 360))
 
         # Draw buttons
         self.screen.blit(reset_surface, reset_rectangle)
