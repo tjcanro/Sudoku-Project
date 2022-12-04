@@ -1,6 +1,6 @@
 import math
 import random
-
+import copy
 
 class SudokuGenerator:
     def __init__(self, row_length, removed_cells):
@@ -107,9 +107,7 @@ def generate_sudoku(size, removed=0):
     sudoku = SudokuGenerator(size, removed)
     sudoku.fill_values()
     board = sudoku.get_board()
+    original = copy.deepcopy(board)
     sudoku.remove_cells()
     sudoku.print_board()
-    return board
-
-
-generate_sudoku(9, 23)
+    return board, original
