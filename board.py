@@ -16,6 +16,7 @@ class Board:
             for i in range(9)
         ]
 
+
     def draw(self):
         self.screen.fill(BG_COLOR)
         for i in range(1, BOARD_ROWS + 1):
@@ -57,6 +58,36 @@ class Board:
         for i in self.cells:
             for j in i:
                 j.draw(self.screen)
+
+        button_font = pygame.font.Font(None, 40)
+
+        reset_text = button_font.render("Reset", True, (255, 255, 255))
+        restart_text = button_font.render("Restart", True, (255, 255, 255))
+        exit_text = button_font.render("Exit", True, (255, 255, 255))
+
+        # Initialize button background color and text
+        reset_surface = pygame.Surface((reset_text.get_size()[0] + 20, reset_text.get_size()[1] + 20))
+        reset_surface.fill(LINE_COLOR)
+        reset_surface.blit(reset_text, (10, 10))
+        restart_surface = pygame.Surface((restart_text.get_size()[0] + 20, restart_text.get_size()[1] + 20))
+        restart_surface.fill(LINE_COLOR)
+        restart_surface.blit(restart_text, (10, 10))
+        exit_surface = pygame.Surface((exit_text.get_size()[0] + 20, exit_text.get_size()[1] + 20))
+        exit_surface.fill(LINE_COLOR)
+        exit_surface.blit(exit_text, (10, 10))
+
+        # Initialize button rectangle
+        reset_rectangle = reset_surface.get_rect(
+            center=(WIDTH // 2 - 150, HEIGHT // 2 + 300))
+        restart_rectangle = restart_surface.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2 + 300))
+        exit_rectangle = exit_surface.get_rect(
+            center=(WIDTH // 2 + 150, HEIGHT // 2 + 300))
+
+        # Draw buttons
+        self.screen.blit(reset_surface, reset_rectangle)
+        self.screen.blit(restart_surface, restart_rectangle)
+        self.screen.blit(exit_surface, exit_rectangle)
 
     def select(self, row, col):
         for i in self.cells:
