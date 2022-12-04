@@ -158,10 +158,12 @@ def main():
                 pygame.quit()
             if event.type == pygame.MOUSEBUTTONDOWN and not game_over:
                 x, y = event.pos
-                row, column = current_board.click(x, y)
-                current_cell = current_board.select(column, row)
-                selected = True
-                current_board.draw()
+                column, row = current_board.click(x, y)
+                if 0 <= row <= 8 and 0 <= column <= 8:
+                    if current_board.original[int(row)][int(column)] == 0:
+                        current_cell = current_board.select(row, column)
+                        selected = True
+                        current_board.draw()
             pygame.display.update()
         while selected:
             for event in pygame.event.get():
@@ -206,10 +208,12 @@ def main():
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     x, y = event.pos
-                    row, column = current_board.click(x, y)
-                    current_cell = current_board.select(column, row)
-                    selected = True
-                    current_board.draw()
+                    column, row = current_board.click(x, y)
+                    if 0 <= row <= 8 and 0 <= column <= 8:
+                        if current_board.original[int(row)][int(column)] == 0:
+                            current_cell = current_board.select(row, column)
+                            selected = True
+                            current_board.draw()
                 pygame.display.update()
             pygame.display.update()
 
