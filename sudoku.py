@@ -4,7 +4,7 @@ from board import Board
 
 
 def draw_game_start(screen):
-    start_title_font = pygame.font.Font(None, 100)
+    start_title_font = pygame.font.Font(None, 80)
     game_mode_font = pygame.font.Font(None, 60)
     button_font = pygame.font.Font(None, 40)
 
