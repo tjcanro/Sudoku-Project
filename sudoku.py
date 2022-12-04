@@ -198,6 +198,8 @@ def main():
                     current_board.update_board()
                     current_cell.draw(screen)
                     current_board.check_board()
+                    current_cell.selected = True
+                    current_board.draw()
                     if current_board.is_full():
                         if current_board.check_board():
                             draw_game_win(screen)
