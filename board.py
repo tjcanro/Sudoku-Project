@@ -1,4 +1,3 @@
-
 from cell import Cell
 from sudoku_generator import *
 from constants import *
@@ -11,7 +10,7 @@ class Board:
         self.height = height
         self.screen = screen
         self.difficulty = difficulty
-        self.board = generate_sudoku(9, difficulty)
+        self.board, self.original = generate_sudoku(9, difficulty)
         self.cells = [
             [Cell(self.board[i][j], i, j, screen) for j in range(9)]
             for i in range(9)
@@ -80,7 +79,7 @@ class Board:
                     self.board.draw()
                     pygame.display.update()
 
-    def place_number(self, value):
+    def place_number(self, cell, value):
         pass
 
     def reset_to_original(self):
@@ -94,14 +93,13 @@ class Board:
         return True
 
     def update_board(self):
-        self.cells = [
-            [Cell(self.board[i][j], i, j, self.screen) for j in range(9)]
-            for i in range(9)
-        ]
-
-    def find_empty(self):
-        pass
+        for i in self.cells:
+            for j in i:
+                self.board[j.row][j.col] = j.value
 
     def check_board(self):
-        pass
-
+        for i in range(9):
+            for j in range(9):
+                if self.board[i][j] != self.original[i][j]:
+                    return False
+        return True
