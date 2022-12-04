@@ -78,7 +78,7 @@ class Board:
 
         # Initialize button rectangle
         reset_rectangle = reset_surface.get_rect(
-            center=(WIDTH // 2 - 150, (HEIGHT - WIDTH) // 2))
+            center=(WIDTH // 2 - 150, HEIGHT // 2 - 200))
         restart_rectangle = restart_surface.get_rect(
             center=(WIDTH // 2, HEIGHT // 2 + 300))
         exit_rectangle = exit_surface.get_rect(
