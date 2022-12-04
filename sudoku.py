@@ -133,7 +133,7 @@ def main():
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
     difficulty = draw_game_start(screen)
-    current_board = Board(WIDTH, HEIGHT, screen, 1)
+    current_board = Board(WIDTH, HEIGHT, screen, difficulty)
     current_board.draw()
     reset_rect, restart_rect, exit_rect = current_board.draw()
     selected = False
