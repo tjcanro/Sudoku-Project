@@ -97,7 +97,7 @@ def draw_game_loss(screen):
     screen.blit(restart_mode_surface, restart_mode_rectangle)
 
 
-def draw_game_screen(screen):
+def draw_game_buttons(screen):
     button_font = pygame.font.Font(None, 40)
 
     reset_text = button_font.render("Reset", True, (255, 255, 255))
