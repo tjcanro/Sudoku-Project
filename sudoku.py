@@ -75,14 +75,14 @@ def draw_game_win(screen):
         center=(WIDTH // 2, HEIGHT // 2 - 200))
     screen.blit(win_surface, win_rectangle)
 
-    exit_text = button_font.render("Exit", True, LINE_COLOR)
+    exit_text = button_font.render("Exit", True, BG_COLOR)
 
     exit_surface = pygame.Surface((exit_text.get_size()[0] + 20, exit_text.get_size()[1] + 20))
     exit_surface.fill(LINE_COLOR)
     exit_surface.blit(exit_text, (10, 10))
 
     exit_rectangle = exit_surface.get_rect(
-        center=(WIDTH // 2 - 150, HEIGHT // 2 + 150))
+        center=(WIDTH // 2, HEIGHT // 2 ))
 
     screen.blit(exit_surface, exit_rectangle)
 
