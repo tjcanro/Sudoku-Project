@@ -116,6 +116,15 @@ def draw_game_loss(screen):
 
     screen.blit(restart_surface, restart_rectangle)
 
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if restart_rectangle.collidepoint(event.pos):
+                    main()
+        pygame.display.update()
+
 
 def main():
     game_over = False
