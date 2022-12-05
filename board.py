@@ -106,6 +106,7 @@ class Board:
         for i in range(9):
             for j in range(9):
                 self.board[i][j] = self.original[i][j]
+                (self.cells[i][j]).value = self.board[i][j]
         self.update_board()
         self.draw()
 
