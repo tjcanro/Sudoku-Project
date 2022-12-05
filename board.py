@@ -5,18 +5,21 @@ import pygame
 
 
 class Board:
+    #Initializes the Board class with dimensions as well as the difficulty
     def __init__(self, width, height, screen, difficulty):
         self.width = width
         self.height = height
         self.screen = screen
         self.difficulty = difficulty
         self.board, self.filled, self.original = generate_sudoku(9, difficulty)
+        #Initializes cells to be a cell objecthat is 9 rows by 9 columns on the screen
         self.cells = [
             [Cell(self.board[i][j], i, j, screen) for j in range(9)]
             for i in range(9)
         ]
 
     def draw(self):
+        #This function sets up th board screen in pygame and includes bold lines to indicate parts of the grid
         self.screen.fill(BG_COLOR)
         for i in range(1, BOARD_ROWS + 1):
             if i % 3 != 0:
@@ -54,6 +57,7 @@ class Board:
                     (j * SQUARE_SIZE, HEIGHT - (HEIGHT - WIDTH)),
                     BOLD_LINE_WIDTH
                 )
+        #This for loop goes through each cell in the list of cell objects and draws each individual cells
         for i in self.cells:
             for j in i:
                 j.draw(self.screen)
@@ -90,6 +94,7 @@ class Board:
 
         return reset_rectangle, restart_rectangle, exit_rectangle
 
+   #The select function marks the cell that is being edited
     def select(self, row, col):
         for i in self.cells:
             for j in i:
@@ -97,11 +102,12 @@ class Board:
                     j.selected = True
                     return j
 
+    #The click function returns a tuple that generalizes the position of the row and column
     def click(self, x, y):
         row = x // SQUARE_SIZE
         col = y // SQUARE_SIZE
         return row, col
-
+    # reset_to_original resets the board to its original state
     def reset_to_original(self):
         for i in range(9):
             for j in range(9):
@@ -109,19 +115,19 @@ class Board:
                 (self.cells[i][j]).value = self.board[i][j]
         self.update_board()
         self.draw()
-
+    # is_full determines whether or not a particular cell was filled or not
     def is_full(self):
         for row in self.board:
             for num in row:
                 if num == 0:
                     return False
         return True
-
+    #update_board updates the board to account for changes inside the cell
     def update_board(self):
         for i in self.cells:
             for j in i:
                 self.board[j.row][j.col] = j.value
-
+    #check_board checks the board to verify that the sudoku is solved correctly
     def check_board(self):
         for i in range(9):
             for j in range(9):
