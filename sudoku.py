@@ -3,9 +3,7 @@ from constants import *
 from board import Board
 
 
-
-
-#The draw_game_start function creates the start screen as well as the menu options
+# The draw_game_start function creates the start screen as well as the menu options
 def draw_game_start(screen):
     start_title_font = pygame.font.Font(None, 80)
     game_mode_font = pygame.font.Font(None, 60)
@@ -52,7 +50,7 @@ def draw_game_start(screen):
     screen.blit(easy_surface, easy_rectangle)
     screen.blit(medium_surface, medium_rectangle)
     screen.blit(hard_surface, hard_rectangle)
-    #While Loop that verifies which difficulty button is chosen
+    # While Loop that verifies which difficulty button is chosen
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -66,7 +64,8 @@ def draw_game_start(screen):
                     return 50
         pygame.display.update()
 
-#draw_game_win function makes the screen in the event of a game win and accounts for restart
+
+# draw_game_win function makes the screen in the event of a game win and accounts for restart
 def draw_game_win(screen):
     win_title_font = pygame.font.Font(None, 100)
     button_font = pygame.font.Font(None, 70)
@@ -77,7 +76,7 @@ def draw_game_win(screen):
     win_rectangle = win_surface.get_rect(
         center=(WIDTH // 2, HEIGHT // 2 - 200))
     screen.blit(win_surface, win_rectangle)
-    #Creates exit button and creates its space on the screen
+    # Creates exit button and creates its space on the screen
     exit_text = button_font.render("Exit", True, BG_COLOR)
 
     exit_surface = pygame.Surface((exit_text.get_size()[0] + 20, exit_text.get_size()[1] + 20))
@@ -97,7 +96,8 @@ def draw_game_win(screen):
                     pygame.quit()
         pygame.display.update()
 
-#The draw_game_loss function accounts for if the sudoku game has been lost and creates the screen for this condition
+
+# The draw_game_loss function accounts for if the sudoku game has been lost and creates the screen for this condition
 def draw_game_loss(screen):
     loss_title_font = pygame.font.Font(None, 100)
     button_font = pygame.font.Font(None, 70)
@@ -117,11 +117,11 @@ def draw_game_loss(screen):
 
     restart_rectangle = restart_surface.get_rect(
         center=(WIDTH // 2, HEIGHT // 2))
-    #screen.blit places the restart button on the screen
+    # screen.blit places the restart button on the screen
     screen.blit(restart_surface, restart_rectangle)
 
     while True:
-        #This for loop accounts for the options to quit and restart the game
+        # This for loop accounts for the options to quit and restart the game
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -132,7 +132,7 @@ def draw_game_loss(screen):
 
 
 def main():
-    #The main starts by initializing the main menu and creates variables that account for the state of the game
+    # The main starts by initializing the main menu and creates variables that account for the state of the game
     game_over = False
     pygame.init()
     pygame.display.set_caption("Sudoku")
@@ -148,12 +148,12 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-            #This if statement accounts for when the game is actively being played
+            # This if statement accounts for when the game is actively being played
             if event.type == pygame.MOUSEBUTTONDOWN and not game_over:
                 x, y = event.pos
                 column, row = current_board.click(x, y)
-                #This if statement accounts for the reset, restart, and quit implementations
-                if reset_rect.collidepoint(x,y):
+                # This if statement accounts for the reset, restart, and quit implementations
+                if reset_rect.collidepoint(x, y):
                     current_board.reset_to_original()
                 if exit_rect.collidepoint(x, y):
                     pygame.quit()
@@ -165,7 +165,7 @@ def main():
                         selected = True
                         current_board.draw()
             pygame.display.update()
-        #This while loop accounts for when a specific cell is selected
+        # This while loop accounts for when a specific cell is selected
         while selected:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -192,7 +192,7 @@ def main():
                         current_cell.set_cell_value(8)
                     if event.key == pygame.K_9:
                         current_cell.set_cell_value(9)
-                    #This if statement accounts for deleting the value in the cell
+                    # This if statement accounts for deleting the value in the cell
                     if event.key == pygame.K_BACKSPACE:
                         current_cell.set_cell_value(0)
                         current_cell.selected = True
@@ -203,7 +203,7 @@ def main():
                     current_board.check_board()
                     current_cell.selected = True
                     current_board.draw()
-                    #This statement checks for the win condition if the board is full
+                    # This statement checks for the win condition if the board is full
                     if current_board.is_full():
                         if current_board.check_board():
                             draw_game_win(screen)
@@ -211,7 +211,7 @@ def main():
                             draw_game_loss(screen)
                         game_over = True
                         selected = False
-                #This accounts for the reset, restart, and quit functions
+                # This accounts for the reset, restart, and quit functions
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     x, y = event.pos
                     if reset_rect.collidepoint(x, y):
@@ -229,6 +229,7 @@ def main():
                 pygame.display.update()
             pygame.display.update()
 
-#Implements the main
+
+# Implements the main
 if __name__ == "__main__":
     main()
